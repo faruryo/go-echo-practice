@@ -2,43 +2,47 @@
 
 ### 開発ツールインストール
 
-- 依存関係管理管理として[dep](https://github.com/golang/dep)を使うのでインストールしておく。
-- ホットリロード用として[realize](https://github.com/oxequa/realize)を使うのでインストールしておく。
+- ホットリロード用として[skaffold](https://skaffold.dev/docs/install/)を使うのでインストールしておく。
 - API 動作確認は[Postman](https://www.postman.com/downloads/)を使うのでインストールしておく。
 - エディタは[Visual Studio Code](https://code.visualstudio.com/download)を使う
   - 拡張の機能[golang/vscode-go](https://github.com/golang/vscode-go)をインストール
 
-### プロジェクト環境設定
-
-依存パッケージインストール
-
-```bash
-dep ensure
-```
-
 ### ホットリロード開発
 
 ```bash
-realize start
+skaffold dev --port-forward
 ```
 
 ```
-[02:44:33][GO-ECHO-PRACTICE] : Watching 1 file/s 1 folder/s
-[02:44:33][GO-ECHO-PRACTICE] : Install started
-[02:44:34][GO-ECHO-PRACTICE] : Install completed in 1.297 s
-[02:44:34][GO-ECHO-PRACTICE] : Running..
-[02:44:34][GO-ECHO-PRACTICE] :    ____    __
-[02:44:34][GO-ECHO-PRACTICE] :   / __/___/ /  ___
-[02:44:34][GO-ECHO-PRACTICE] :  / _// __/ _ \/ _ \
-[02:44:34][GO-ECHO-PRACTICE] : /___/\__/_//_/\___/ v4.1.16
-[02:44:34][GO-ECHO-PRACTICE] : High performance, minimalist Go web framework
-[02:44:34][GO-ECHO-PRACTICE] : https://echo.labstack.com
-[02:44:34][GO-ECHO-PRACTICE] : ____________________________________O/_______
-[02:44:34][GO-ECHO-PRACTICE] :                                     O\
-[02:44:34][GO-ECHO-PRACTICE] : ⇨ http server started on [::]:1323
+Listing files to watch...
+ - faruryo/go-echo-practice
+Generating tags...
+ - faruryo/go-echo-practice -> faruryo/go-echo-practice:c8e8ce1-dirty
+Checking cache...
+ - faruryo/go-echo-practice: Not found. Building
+Found [docker-desktop] context, using local docker daemon.
+Building [faruryo/go-echo-practice]...
+[+] Building 3.3s (15/15) FINISHED
+
+・・・・・・・・・・・・・・・・・・・・
+
+Deployments stabilized in 1.588212185s
+Port forwarding service/go-echo-practice-api in namespace default, remote port 8080 -> address 127.0.0.1 port 8080
+Press Ctrl+C to exit
+Watching for changes...
+[go-echo-practice-api-55c6d8764f-8kj7w go-echo-practice-api]
+[go-echo-practice-api-55c6d8764f-8kj7w go-echo-practice-api]    ____    __
+[go-echo-practice-api-55c6d8764f-8kj7w go-echo-practice-api]   / __/___/ /  ___
+[go-echo-practice-api-55c6d8764f-8kj7w go-echo-practice-api]  / _// __/ _ \/ _ \
+[go-echo-practice-api-55c6d8764f-8kj7w go-echo-practice-api] /___/\__/_//_/\___/ v4.1.16
+[go-echo-practice-api-55c6d8764f-8kj7w go-echo-practice-api] High performance, minimalist Go web framework
+[go-echo-practice-api-55c6d8764f-8kj7w go-echo-practice-api] https://echo.labstack.com
+[go-echo-practice-api-55c6d8764f-8kj7w go-echo-practice-api] ____________________________________O/_______
+[go-echo-practice-api-55c6d8764f-8kj7w go-echo-practice-api]                                     O\
+[go-echo-practice-api-55c6d8764f-8kj7w go-echo-practice-api] ⇨ http server started on [::]:8080
 ```
 
-[http://localhost:1323/](http://localhost:1323/)を開く
+[http://localhost:8080/](http://localhost:8080/)を開く
 
 ## 参考
 

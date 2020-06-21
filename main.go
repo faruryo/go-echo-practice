@@ -3,20 +3,20 @@ package main
 import (
 	"net/http"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
 	e := echo.New()
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
+		return c.String(http.StatusOK, "Hello, Worldk!")
 	})
 	e.GET("/users/:name", getUserName)
 	e.POST("/users", saveUser)
 	e.GET("/show", show)
 	e.POST("/save", save)
 	e.POST("/send", sendMessage)
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":8080"))
 }
 
 func getUserName(c echo.Context) error {
@@ -75,6 +75,6 @@ func sendMessage(c echo.Context) error {
 	r.Name = m.Name
 	r.Email = m.Email
 	r.Message = m.Message
-	r.Status = "successa"
+	r.Status = "success"
 	return c.JSON(http.StatusOK, r)
 }

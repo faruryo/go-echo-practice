@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta4
+kind: Config
+metadata:
+  name: go-echo-practice
+build:
+  artifacts:
+    - image: faruryo/go-echo-practice
+      docker:
+        dockerfile: Dockerfile
+  local:
+    useBuildkit: true
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes/api.yaml
+portForward:
+  - resourceType: service
+    resourceName: go-echo-practice-api
+    port: 8080
+    localPort: 8080
